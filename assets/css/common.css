@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100&family=Rubik:wght@300;400;600;800&display=swap");
+:root {
+    --font1: "Rubik", "segoe ui-regular", sans-serif;
+    --color1: #501EFF;
+    --color2: #F60AEE;
+    --text1: #9f9dc9;
+    --text2: #837aad;
+    --back1: #130e23;
+    --back2: #262347;
+    --back3: #332c63;
+    --back4: #0D0B1F;
+    --image: url('../images/avatar.jpg')
+}
+
+*,
+::before,
+::after {
+    user-select: none;
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0px;
+    line-height: 1.5em;
+    font-weight: 600;
+}
+
+input,
+textarea,
+select {
+    border: none;
+    outline: none !important;
+    font: inherit;
+}
+
+button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+p {
+    margin: 0px;
+}
+
+b {
+    font-weight: 600;
+}
+
+.hide {
+    display: none !important;
+}

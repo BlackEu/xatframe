@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackEuphoria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="./assets/css/common.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+        <header class="main-header">
+            <div class="cover">
+                <div class="main-user">
+                    <div class="frame">
+                        <div class="frame"></div>
+                    </div>
+                    <h1>Muhammad Saleh <img src="./assets/images/eg.svg" height="20" title="Egypt"></h1>
+                    <span>@BlackEuphoria</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <main class="main-content">
+                <section class="ask">
+                    <form class="ask-form">
+                        <b>Anonymously message</b>
+                        <textarea name="message" placeholder="What's your favorite color?" required></textarea>
+                        <button>Send</button>
+                    </form>
+                </section>
+                <section class="posts"></section>
+            </main>
+            <aside class="sidebar">
+                <section class="friends portlet">
+                    <div class="sidebar-head">
+                        <h2>MY FRIENDS</h2>
+                        <button title="shuffle" class="shuffle-friends"></button>
+                    </div>
+                    <div class="friends-list"></div>
+                </section>
+                <iframe width="100%" height="350" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/240717404&color=%23501eff&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                <section class="rooms portlet">
+                    <div class="sidebar-head">
+                        <h2>FAVORITE ROOMS</h2>
+                    </div>
+                    <div class="rooms-list">
+                        <div class="room">
+                            <img src="" alt="">
+                            <b class="chat-name">7reqa</b>
+                            <a class="chat-url" href="https://xat.com/7reqa" target="_blank" rel="nofollow noopener">xat.com/7reqa</a>
+                        </div><!-- /.room -->
+                        <div class="room">
+                            <img src="" alt="">
+                            <b class="chat-name">TheOldLover</b>
+                            <a class="chat-url" href="https://xat.com/TheOldLover" target="_blank" rel="nofollow noopener">xat.com/TheOldLover</a>
+                        </div><!-- /.room -->
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </div><!-- /.main-wrapper -->
+
+    <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
+
+    <template id="post-temp">
+        <div class="portlet post" data-id="{{id}}">
+            <div class="post-user">
+                <div class="frame"></div>
+                <b>Muhammad Saleh</b>
+                <span class="post-date">{{date}}</span>
+            </div>
+            <div class="post-content">{{post}}</div>
+        </div>
+    </template>
+
+    <template id="message-temp">
+        <div class="portlet message" data-id="{{id}}">
+            <span class="post-date">{{date}}</span>
+            <blockquote>{{message}}</blockquote>
+            <div class="reply">
+                <div class="frame"></div>
+                <span class="post-date">{{reply_date}}</span>
+                <p class="reply-content">{{reply}}</p>
+            </div>
+        </div>
+    </template>
+
+    <template id="friend-temp">
+        <div class="user" data-id="{{id}}">
+            <div class="frame" style="--image: url('{{avatar}}')"></div>
+            <b class="name">{{name}}</b>
+            <span class="username">@{{username}}</span>
+        </div>
+    </template>
+
+
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth-compat.js"></script>
+    <script src="./assets/js/firebase.js"></script>
+    <script src="./assets/js/common.js"></script>
+    <script src="./assets/js/index.js"></script>
+</body>
+
+</html>
