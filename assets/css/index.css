@@ -179,7 +179,7 @@ main.main-content {
     top: 0;
 }
 
-form.ask-form {
+.ask-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -189,7 +189,7 @@ form.ask-form {
     position: relative;
 }
 
-form.ask-form textarea {
+.ask-form textarea {
     padding: 30px 30px;
     border-radius: 10px;
     background-color: var(--back2);
@@ -200,13 +200,13 @@ form.ask-form textarea {
     min-height: 100px;
 }
 
-form.ask-form textarea::placeholder {
+.ask-form textarea::placeholder {
     font-size: 14px;
     letter-spacing: -0.3px;
     color: var(--text2);
 }
 
-form.ask-form button {
+.ask-form button {
     background: linear-gradient(45deg, var(--color1), var(--color2));
     border: none;
     outline: none;
@@ -222,24 +222,24 @@ form.ask-form button {
     opacity: .95;
 }
 
-form.ask-form button::before {
+.ask-form button::before {
     content: "";
     background: url("../images/send.svg") center center / contain no-repeat;
     width: 20px;
     height: 20px;
 }
 
-form.ask-form button:disabled {
+.ask-form button:disabled {
     background: var(--text2);
     pointer-events: none;
     opacity: 0.7;
 }
 
-form.ask-form button:hover {
+.ask-form button:hover {
     opacity: 1;
 }
 
-form.ask-form b {
+.ask-form b {
     color: #FFF;
     font-size: 15px;
     display: flex;
@@ -248,7 +248,7 @@ form.ask-form b {
     margin-bottom: 10px;
 }
 
-form.ask-form b::before {
+.ask-form b::before {
     content: "";
     background: url("../images/anonymous.svg") no-repeat center / contain;
     width: 20px;

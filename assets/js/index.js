@@ -5,18 +5,18 @@ $(".shuffle-friends").addEventListener("click", function () {
 
 
 
-$(".ask-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    let form = this;
-    let message = form.querySelector("textarea").value;
-    let button = form.querySelector("button");
-    button.disabled = true;
+$(".send-message").addEventListener("click", function () {
+    let button = this;
+    let message = $("#message").value;
 
+    if (message.trim().length < 3) return;
+
+    button.disabled = true;
     db.ref(`messages`).push({
         date: Date.now(),
         message: message
     }).then(() => {
-        form.reset();
+        $("#message").value = "";
         button.disabled = false;
     })
 })
