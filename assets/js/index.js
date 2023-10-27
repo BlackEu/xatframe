@@ -58,6 +58,7 @@ db.ref("friends").get().then((snapshot) => {
             .replace("{{id}}", item.key)
             .replace("{{name}}", friend.name)
             .replace("{{username}}", friend.username)
+            .replace("{{username}}", friend.username)
             .replace("{{avatar}}", friend.avatar);
         friends_wrapper.append(temp);
     });

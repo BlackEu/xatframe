@@ -58,7 +58,7 @@ body::before {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
-    gap: 0px 40px;
+    gap: 0px 30px;
 }
 
 .main-user h1 {
@@ -75,7 +75,7 @@ body::before {
 }
 
 .main-user .frame {
-    --size: 110px;
+    --size: 100px;
 }
 
 .main-user .frame::after {
@@ -84,10 +84,10 @@ body::before {
 }
 
 .main-user .frame .frame {
-    --size: 130px;
+    --size: 110px;
     position: absolute;
-    top: -12px;
-    left: -10px;
+    top: -6px;
+    left: -4px;
 }
 
 .main-user .frame .frame:before {
@@ -96,6 +96,7 @@ body::before {
 
 .main-user .frame .frame:after {
     background: #1d1630;
+    inset: 5px;
 }
 
 
@@ -393,13 +394,18 @@ section.friends .sidebar-head h2::before {
 
 b.name {
     color: #FFF;
-    font-weight: 600;
+    font-weight: normal;
     align-self: flex-end;
 }
 
-span.username {
+a.username {
     color: var(--text1);
     font-weight: 300;
+    text-decoration: none;
+}
+
+a.username:hover {
+    text-decoration: underline;
 }
 
 button.shuffle-friends {
