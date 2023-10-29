@@ -305,14 +305,15 @@ p.reply-content {
     font-size: 18px;
 }
 
-.portlet.post {
-    /* background: var(--color1); */
-}
-
 .post-content {
     color: #FFF;
     margin: 10px 0px 0px;
     font-size: 18px;
+}
+
+.post-content img {
+    width: 100%;
+    border-radius: 5px;
 }
 
 .post-user {

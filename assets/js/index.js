@@ -29,10 +29,13 @@ db.ref(`posts`).orderByChild("date").get().then((snapshot) => {
 
     snapshot.forEach((item) => {
         let post = item.val();
+        let content = "";
+        if (post.content) content += post.content;
+        if (post.media) content = `<img src="${post.media}">`;
         if (post.type == "post") {
             let temp = $("#post-temp").innerHTML
                 .replace("{{id}}", item.key)
-                .replace("{{post}}", post.content)
+                .replace("{{post}}", content)
                 .replace("{{date}}", TimeAgo(post.date));
             posts_wrapper.prepend(temp);
         }
