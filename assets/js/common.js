@@ -74,11 +74,12 @@ function ParentsUntil(el, end_node) {
     let parents = [];
     GetParent(el);
     return parents;
-}
-function GetParent(el) {
-    if (el.parentElement && !el.isEqualNode(end_node)) {
-        parents.push(el.parentElement);
-        GetParent(el.parentElement);
+
+    function GetParent(el) {
+        if (el.parentElement && !el.isEqualNode(end_node)) {
+            parents.push(el.parentElement);
+            GetParent(el.parentElement);
+        }
     }
 }
 
