@@ -58,7 +58,7 @@ body::before {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
-    gap: 0px 30px;
+    gap: 0px 20px;
 }
 
 .main-user h1 {
@@ -67,20 +67,17 @@ body::before {
     align-items: center;
     gap: 10px;
     align-self: flex-end;
+    text-shadow: -3px 3px var(--color1);
 }
 
-.main-user span {
+.main-user span.username {
     font-size: 14px;
     opacity: 0.7;
 }
 
 .main-user .frame {
     --size: 100px;
-}
-
-.main-user .frame::after {
-    inset: 10px;
-    filter: drop-shadow(black 2px 4px 6px);
+    box-shadow: -10px 0px 20px var(--color1), -40px 0px 70px var(--color1);
 }
 
 .main-user .frame .frame {
@@ -102,29 +99,35 @@ body::before {
 
 /* COMMON */
 
-.frame {
+span.frame {
     --size: 60px;
     width: var(--size);
-    height: calc(1.15*var(--size));
+    height: var(--size);
     position: relative;
     grid-row: 1 / 3;
-    /* filter: url(#goo); */
+    border-radius: 60px;
 }
 
-.frame::before,
-.frame::after {
+span.frame:before {
     content: "";
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0px 75%, 0% 25%);
     position: absolute;
-    inset: 0px;
-    background: var(--color1);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--color1), var(--color2));
+    border-radius: inherit;
 }
 
-.frame::after {
-    background-image: var(--image);
-    background-position: center center;
-    background-size: cover;
-    inset: 5px;
+span.frame:after {
+    content: "";
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background: var(--image) no-repeat center / cover;
+    border-radius: inherit;
 }
 
 .user {
@@ -139,20 +142,15 @@ body::before {
     content: "";
     width: 30px;
     height: 30px;
-    background: var(--back3) url("../images/bff.svg") no-repeat center / 20px;
+    background: var(--back3) url("../images/bff.svg") no-repeat center / 25px;
     position: absolute;
     bottom: -5px;
     left: 30px;
     border-radius: 100px;
-    padding: 10px;
 }
 
 .user .frame {
     grid-row: 1 / 3;
-}
-
-.user .frame:before {
-    /* background-color: var(--color2); */
 }
 
 .portlet {
@@ -371,7 +369,7 @@ section.friends .sidebar-head h2::before {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-height: 470px;
+    max-height: 480px;
     overflow: auto;
 }
 
@@ -407,6 +405,7 @@ a.username {
 
 a.username:hover {
     text-decoration: underline;
+    color: #fff;
 }
 
 button.shuffle-friends {
@@ -494,4 +493,49 @@ a.chat-url:before {
     .cover {
         justify-content: center;
     }
+}
+
+
+/**/
+
+.post-media {
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.post-media img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 25px var(--back2);
+}
+
+.post-media[data-count="2"] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.post-media[data-count="3"] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.post-media[data-count="3"] img:first-of-type {
+    grid-column: 1/3;
+}
+
+.post-media[data-count="4"] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.post-media[data-count="5"] {
+    display: grid;
+}
+
+.post-media[data-count="5"] img:first-of-type {
+    grid-column: 1/3;
+}
+
+audio {
+    width: 100%;
 }

@@ -9,7 +9,7 @@ $(".send-message").addEventListener("click", function () {
     let button = this;
     let message = $("#message").value;
 
-    if (message.trim().length < 3) return;
+    if (message.trim().length < 3) return $("#message").reportValidity();
 
     button.disabled = true;
     db.ref(`messages`).push({
@@ -30,12 +30,20 @@ db.ref(`posts`).orderByChild("date").get().then((snapshot) => {
     snapshot.forEach((item) => {
         let post = item.val();
         let content = "";
-        if (post.content) content += post.content;
-        if (post.media) content = `<img src="${post.media}">`;
+        let media = "";
+        if (post.media) {
+            media = post.media.map((media) => {
+                if (media.type.startsWith("image")) return `<img src="${media.url}" loading="lazy">`
+                if (media.type.startsWith("video")) return `<video src="${media.url}" loading="lazy" controls playsinline>`
+                if (media.type.startsWith("audio")) return `<audio src="${media.url}" loading="lazy" controls>`
+            }).join("")
+        }
         if (post.type == "post") {
             let temp = $("#post-temp").innerHTML
                 .replace("{{id}}", item.key)
-                .replace("{{post}}", content)
+                .replace("{{post}}", post.content || "")
+                .replace("{{media}}", media)
+                .replace("{{media_count}}", post.media && post.media.length)
                 .replace("{{date}}", TimeAgo(post.date));
             posts_wrapper.prepend(temp);
         }
@@ -65,6 +73,6 @@ db.ref("friends").get().then((snapshot) => {
             .replace("{{avatar}}", friend.avatar);
         friends_wrapper.append(temp);
     });
-    $("[data-id='-Nhi2UZbSWUAfZ5MSPJl']").addClass("bff");
+    $("[data-id='-NhxoRLWzwW0YpGzrZF8']").addClass("bff");
     $("button.shuffle-friends").dispatchEvent(new Event("click"))
 })

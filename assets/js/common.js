@@ -53,9 +53,10 @@ Element.prototype.after = function (content) {
     this[typeof content == "string" ? "insertAdjacentHTML" : "insertAdjacentElement"]("afterend", content);
     return this;
 }
-Element.prototype.on = function (event_name, class_name, callback) {
+Element.prototype.on = function (event_name, selector, callback) {
+    let _this = this;
     this.addEventListener(event_name, function (e) {
-        if (e.target.classList.contains(class_name)) callback.call(this.querySelector(`.${class_name}`), e);
+        if (e.target.isEqualNode(_this.querySelector(selector))) callback.call(this.querySelector(selector), e);
     });
     return this;
 }
@@ -93,13 +94,13 @@ function TimeAgo(timestamp) {
     let result = "";
 
     if (days > 0) {
-        result = days + " days ago";
+        result = `${days} day${days > 1 ? "s" : ""} ago`;
     } else {
         if (hours > 0) {
-            result = hours + " hours ago"
+            result = `${hours} hour${hours > 1 ? "s" : ""} ago`
         } else {
             if (minutes > 0) {
-                result = minutes + " minutes ago"
+                result = `${minutes} minute${minutes > 1 ? "s" : ""} ago`
             } else {
                 result = "A few moments ago"
             }
