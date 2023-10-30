@@ -26,6 +26,9 @@ Element.prototype.addClass = function (classname) {
     this.classList.add(classname);
     return this;
 }
+Element.prototype.hasClass = function (classname) {
+    return this.classList.contains(classname);
+}
 Element.prototype.removeClass = function (classname) {
     this.classList.remove(classname);
     return this;
@@ -55,10 +58,28 @@ Element.prototype.after = function (content) {
 }
 Element.prototype.on = function (event_name, selector, callback) {
     let _this = this;
+
     this.addEventListener(event_name, function (e) {
-        if (e.target.isEqualNode(_this.querySelector(selector))) callback.call(this.querySelector(selector), e);
+        _this.querySelectorAll(selector).forEach((el) => {
+            if (!e.target.isEqualNode(el)) return;
+            let clicked_parents = ParentsUntil(e.target, _this);
+            let el_parents = ParentsUntil(el, _this);
+            let not_equal_parent = clicked_parents.find((parent, index) => !parent.isEqualNode(el_parents[index]));
+            if (!not_equal_parent) callback.call(el, e);
+        })
     });
     return this;
+}
+function ParentsUntil(el, end_node) {
+    let parents = [];
+    GetParent(el);
+    return parents;
+}
+function GetParent(el) {
+    if (el.parentElement && !el.isEqualNode(end_node)) {
+        parents.push(el.parentElement);
+        GetParent(el.parentElement);
+    }
 }
 
 window.$ = function (selector) {

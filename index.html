@@ -38,7 +38,7 @@
             <aside class="sidebar">
                 <section class="friends portlet">
                     <div class="sidebar-head">
-                        <h2>MY FRIENDS</h2>
+                        <h2>FRIENDS</h2>
                         <button title="shuffle" class="shuffle-friends"></button>
                     </div>
                     <div class="friends-list"></div>
@@ -75,9 +75,33 @@
             </div>
             <div class="post-content">{{post}}</div>
             <div class="post-media" data-count="{{media_count}}">{{media}}</div>
+            <div class="post-footer">
+                <div class="post-actions">
+                    <button class="like-post" data-count="{{likes}}"></button>
+                    <div class="send-comment-form">
+                        <textarea placeholder="Type your comment" class="comment-input" minlength="3" required></textarea>
+                        <button class="send-comment"></button>
+                    </div>
+                    <button class="toggle-comments"></button>
+                </div>
+                <ul class="post-comments"></ul>
+            </div>
         </div>
     </template>
-
+    <template id="comment-temp">
+        <li data-id="{{id}}">
+            <span class="frame"></span>
+            <div class="comment-wrap">
+                <b class="comment-user">Anonymous</b>
+                <p>{{content}}</p>
+                <footer class="comment-foot">
+                    <!-- <button class="like-comment">Like</button>
+                    <button class="reply-comment">Reply</button> -->
+                    <span class="post-date">{{date}}</span>
+                </footer>
+            </div>
+        </li>
+    </template>
     <template id="message-temp">
         <div class="portlet message" data-id="{{id}}">
             <span class="post-date">{{date}}</span>
