@@ -729,6 +729,7 @@ button.send-comment {
     border-radius: 100px;
     margin-inline-start: -45px;
     margin-inline-end: 5px;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -736,7 +737,7 @@ button.send-comment {
 
 .send-comment-form {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 10px;
     flex-grow: 1;
 }
