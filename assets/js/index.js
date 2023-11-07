@@ -57,13 +57,12 @@ db.ref(`posts`).orderByChild("date").get().then((snapshot) => {
 
     snapshot.forEach((item) => {
         let post = item.val();
-        let content = "";
         let media = "";
         if (post.media) {
             media = post.media.map((media) => {
-                if (media.type.startsWith("image")) return `<img src="${media.url}" loading="lazy">`
-                if (media.type.startsWith("video")) return `<video src="${media.url}" loading="lazy" controls playsinline>`
-                if (media.type.startsWith("audio")) return `<audio src="${media.url}" loading="lazy" controls>`
+                if (media.type.startsWith("image")) return `<li><img src="${media.url}" loading="lazy"></li>`
+                if (media.type.startsWith("video")) return `<li><video src="${media.url}" loading="lazy" controls playsinline></li>`
+                if (media.type.startsWith("audio")) return `<li><audio src="${media.url}" loading="lazy" controls></li>`
             }).join("")
         }
         if (post.type == "post") {
@@ -80,7 +79,7 @@ db.ref(`posts`).orderByChild("date").get().then((snapshot) => {
 
             if (post.comments) {
                 let comments = post.comments;
-                let comments_wrapper = $(`.post[data-id="${item.key}"] .post-comments`);
+                let comments_wrapper = $(`.post[data-id="${item.key}"]`).addClass("comments-open").querySelector(".post-comments");
 
                 Object.keys(comments).forEach((comment_id) => {
                     let comment = comments[comment_id];
@@ -97,9 +96,26 @@ db.ref(`posts`).orderByChild("date").get().then((snapshot) => {
                 .replace("{{id}}", item.key)
                 .replace("{{date}}", TimeAgo(post.date))
                 .replace("{{message}}", post.content)
+                .replace("{{likes}}", post.likes || 0)
                 .replace("{{reply}}", post.reply.content)
                 .replace("{{reply_date}}", TimeAgo(post.reply.date))
             posts_wrapper.prepend(temp);
+
+            if (localStorage.getItem(`liked-${item.key}`)) $(`.post[data-id="${item.key}"] button.like-post`).addClass("liked");
+
+            if (post.comments) {
+                let comments = post.comments;
+                let comments_wrapper = $(`.post[data-id="${item.key}"]`).addClass("comments-open").querySelector(".post-comments");
+
+                Object.keys(comments).forEach((comment_id) => {
+                    let comment = comments[comment_id];
+                    let comment_temp = $("#comment-temp").innerHTML
+                        .replace("{{id}}", comment_id)
+                        .replace("{{date}}", TimeAgo(comment.date))
+                        .replace("{{content}}", comment.content);
+                    comments_wrapper.append(comment_temp)
+                })
+            }
         }
     })
 })

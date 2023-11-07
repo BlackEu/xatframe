@@ -74,7 +74,7 @@
                 <span class="post-date">{{date}}</span>
             </div>
             <div class="post-content">{{post}}</div>
-            <div class="post-media" data-count="{{media_count}}">{{media}}</div>
+            <ul class="post-media" data-count="{{media_count}}">{{media}}</ul>
             <div class="post-footer">
                 <div class="post-actions">
                     <button class="like-post" data-count="{{likes}}"></button>
@@ -110,6 +110,17 @@
                 <span class="frame"></span>
                 <span class="post-date">{{reply_date}}</span>
                 <p class="reply-content">{{reply}}</p>
+            </div>
+            <div class="post-footer">
+                <div class="post-actions">
+                    <button class="like-post" data-count="{{likes}}"></button>
+                    <div class="send-comment-form">
+                        <textarea placeholder="Type your comment" class="comment-input" minlength="3" required></textarea>
+                        <button class="send-comment"></button>
+                    </div>
+                    <button class="toggle-comments"></button>
+                </div>
+                <ul class="post-comments"></ul>
             </div>
         </div>
     </template>
