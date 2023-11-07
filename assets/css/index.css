@@ -321,7 +321,7 @@ p.reply-content {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
-    gap: 0px 15px;
+    gap: 3px 15px;
 }
 
 .post-user b {
