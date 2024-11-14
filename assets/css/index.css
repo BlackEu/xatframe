@@ -303,6 +303,7 @@ p.reply-content {
     color: #FFF;
     padding-top: 5px;
     font-size: 18px;
+    text-align: left;
 }
 
 .post-content {
